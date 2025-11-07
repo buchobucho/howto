@@ -114,8 +114,98 @@ Required secrets:
 - `GITHUB_TOKEN` (auto-provided by GitHub Actions)
 - `ANTHROPIC_API_KEY` (add manually for agent execution)
 
+## Features
+
+### Lark API Integration
+
+This project includes full Lark（飛書/Feishu）API integration for creating and managing Bases (Bitables).
+
+**Quick Start:**
+
+```typescript
+import { LarkService } from './src/services/LarkService.js';
+
+const larkService = new LarkService({
+  appId: process.env.LARK_APP_ID!,
+  appSecret: process.env.LARK_APP_SECRET!,
+});
+
+// Create a complete Base with table and records
+const result = await larkService.createCompleteBase(
+  'Task Management',
+  'タスク一覧',
+  [
+    { field_name: 'タスク名', type: 1 },
+    { field_name: '完了', type: 7 },
+  ],
+  [{ fields: { タスク名: 'サンプル', 完了: false } }]
+);
+```
+
+**Features:**
+- ✅ Create Bitables (Bases)
+- ✅ Create tables with custom fields
+- ✅ CRUD operations for records
+- ✅ Batch operations for efficiency
+- ✅ Filter & sort support
+- ✅ 19 field types supported
+- ✅ Full TypeScript support
+
+**Documentation:**
+- [Complete API Guide](./docs/LARK_API_GUIDE.md)
+- [Usage Examples](./examples/lark-example.ts)
+- [Demo Script](./examples/lark-demo.ts)
+
+**Run Demo:**
+
+```bash
+export LARK_APP_ID="your_app_id"
+export LARK_APP_SECRET="your_app_secret"
+npx tsx examples/lark-demo.ts
+```
+
+This creates 3 practical Bases:
+1. 📋 Task Management System
+2. 👥 CRM System
+3. 📦 Inventory Management System
+
+---
+
+### Landing Page
+
+Professional landing page for programming schools targeting career changers.
+
+**Features:**
+- Responsive design (mobile-first)
+- Hero section with statistics
+- Curriculum timeline
+- Pricing plans (¥298,000 - ¥698,000)
+- FAQ accordion
+- Contact form with validation
+
+**View:** Open `lp/index.html` in your browser
+
+---
+
+### XTEP-like Application
+
+X (Twitter) marketing automation tool with:
+- Automated DM/Reply sending
+- Campaign management (lottery systems)
+- Post scheduling
+- Analytics dashboard
+
+**Run:**
+```bash
+npm run dev
+```
+
+---
+
 ## Documentation
 
+- **Lark API Guide**: [docs/LARK_API_GUIDE.md](./docs/LARK_API_GUIDE.md)
+- **Course Materials**: [docs/README.md](./docs/README.md) - AI×TikTok Affiliate Marketing
 - **Miyabi Framework**: https://github.com/ShunsukeHayashi/Miyabi
 - **NPM Package**: https://www.npmjs.com/package/miyabi
 - **Label System**: See `.github/labels.yml`

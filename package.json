@@ -17,6 +17,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@larksuiteoapi/node-sdk": "^1.55.0",
     "docx": "^9.5.1"
   },
   "devDependencies": {
